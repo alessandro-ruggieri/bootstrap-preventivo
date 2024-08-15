@@ -42,43 +42,68 @@
                <h2 class="pt-4">Richiesta Preventivo</h2>
                <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo</p>
                <!-- FORM START -->
-               <form class="pb-4">
+               <form class="pb-4" novalidate>
+                  <!-- Form name -->
                   <div class="mb-3">
                      <label for="nome" class="form-label">Nome</label>
-                     <input type="text" class="form-control" id="name">
+                     <input type="text" class="form-control" id="nome" required>
+                     <div id="nomeFeedback" class="invalid-feedback">
+                        Inserisci un nome valido.
+                      </div>
                    </div>
+                   <!-- Form surname -->
                    <div class="mb-3">
                      <label for="cognome" class="form-label">Cognome</label>
-                     <input type="text" class="form-control" id="cognome">
+                     <input type="text" class="form-control" id="cognome" required>
+                     <div id="cognome" class="invalid-feedback">
+                        Inserisci un cognome valido.
+                      </div>
                    </div>
+                   <!-- Form email -->
                    <div class="mb-3">
                      <label for="email" class="form-label">Email</label>
-                     <input type="email" class="form-control" id="email">
+                     <input type="email" class="form-control" id="email" required>
+                     <div id="emailFeedback" class="invalid-feedback">
+                        Inserisci una mail valida.
+                      </div>
                    </div>
-                   <label for="select" class="form-label">Tipo di Lavoro</label>
-                   <select class="form-select mb-3" id="select" aria-label="Tipo di Lavoro">
-                     <option selected>Seleziona il tipo di lavoro</option>
-                     <option value="1">Sviluppo Backend</option>
-                     <option value="2">Sviluppo Frontend</option>
-                     <option value="3">Analisi Progettuale</option>
-                   </select>
+                   <!-- Form select -->
+                   <div class="mb-3">
+                     <label for="select" class="form-label">Tipo di Lavoro</label>
+                     <select class="form-select mb-3" id="select" aria-label="Tipo di Lavoro" required>
+                        <option value="" selected disabled>Seleziona il tipo di lavoro</option>
+                        <option value="1">Sviluppo Backend</option>
+                        <option value="2">Sviluppo Frontend</option>
+                        <option value="3">Analisi Progettuale</option>
+                     </select>
+                     <div id="selectFeedback" class="invalid-feedback" style="margin-top:-10px">
+                        Seleziona il tipo di lavoro da svolgere.
+                     </div>
+                  </div>
+                  <!-- Form textarea -->
                    <div class="mb-3">
                      <label for="textarea" class="form-label">Textarea con Bootstrap 5</label>
                      <textarea class="form-control" id="textarea" rows="3"></textarea>
                    </div>
+                   <!-- Form promoCode -->
                    <div class="mb-3">
                      <label for="codicePromo" class="form-label">Codice Promozionale (opzionale)</label>
                      <input type="text" class="form-control" id="codicePromo">
                    </div>
+                   <!-- Form privacyPolicy -->
                    <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="privacyPolicy">
+                     <input class="form-check-input" type="checkbox" value="" id="privacyPolicy" required>
                      <label class="form-check-label" for="privacyPolicy">
                        Accetto la Privacy Policy
                      </label>
+                     <div id="privacyPolicyFeedback" class="invalid-feedback">
+                        Devi accettare la Privacy Policy se vuoi proseguire.
+                      </div>
                    </div>
+                   <!-- Submit button and pricing area -->
                    <div class="d-flex justify-content-around align-items-center pb-3">
                      <div>
-                        <input class="btn btn-primary my-4" type="submit" value="Calcola Preventivo">
+                        <button class="btn btn-primary" type="submit">Calcola Preventivo</button>
                      </div>
                      <div class="text-center">
                         <h5>Prezzo Finale</h5>
@@ -88,6 +113,7 @@
                </form>
                <!-- FORM END -->
             </div>
+            
             <div class="col-lg-4 d-flex align-items-start justify-content-center justify-content-lg-end">
                <!-- CARD CONTACT ELEMENT -->
                <div class="card mt-4 mb-5" style="width: 100%; max-width: 18.75rem;">
