@@ -42,11 +42,11 @@
                <h2 class="pt-4">Richiesta Preventivo</h2>
                <p>Compila il form per richiedere un preventivo per i nostri servizi di sviluppo</p>
                <!-- FORM START -->
-               <form class="pb-4" novalidate>
+               <form id="form" class="pb-4" novalidate>
                   <!-- Form name -->
                   <div class="mb-3">
                      <label for="nome" class="form-label">Nome</label>
-                     <input type="text" class="form-control" id="nome" required>
+                     <input type="text" class="form-control to-validate" id="nome" required>
                      <div id="nomeFeedback" class="invalid-feedback">
                         Inserisci un nome valido.
                       </div>
@@ -54,7 +54,7 @@
                    <!-- Form surname -->
                    <div class="mb-3">
                      <label for="cognome" class="form-label">Cognome</label>
-                     <input type="text" class="form-control" id="cognome" required>
+                     <input type="text" class="form-control to-validate" id="cognome" required>
                      <div id="cognome" class="invalid-feedback">
                         Inserisci un cognome valido.
                       </div>
@@ -62,7 +62,7 @@
                    <!-- Form email -->
                    <div class="mb-3">
                      <label for="email" class="form-label">Email</label>
-                     <input type="email" class="form-control" id="email" required>
+                     <input type="email" class="form-control to-validate" id="email" required>
                      <div id="emailFeedback" class="invalid-feedback">
                         Inserisci una mail valida.
                       </div>
@@ -70,11 +70,9 @@
                    <!-- Form select -->
                    <div class="mb-3">
                      <label for="select" class="form-label">Tipo di Lavoro</label>
-                     <select class="form-select mb-3" id="select" aria-label="Tipo di Lavoro" required>
+                     <select class="form-select mb-3 to-validate" id="select" aria-label="Tipo di Lavoro" required>
                         <option value="" selected disabled>Seleziona il tipo di lavoro</option>
-                        <option value="1">Sviluppo Backend</option>
-                        <option value="2">Sviluppo Frontend</option>
-                        <option value="3">Analisi Progettuale</option>
+                        
                      </select>
                      <div id="selectFeedback" class="invalid-feedback" style="margin-top:-10px">
                         Seleziona il tipo di lavoro da svolgere.
@@ -92,7 +90,7 @@
                    </div>
                    <!-- Form privacyPolicy -->
                    <div class="form-check">
-                     <input class="form-check-input" type="checkbox" value="" id="privacyPolicy" required>
+                     <input class="form-check-input to-validate" type="checkbox" value="" id="privacyPolicy" required>
                      <label class="form-check-label" for="privacyPolicy">
                        Accetto la Privacy Policy
                      </label>
