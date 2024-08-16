@@ -4,7 +4,7 @@ const workType = ['Sviluppo Backend', 'Sviluppo Frontend', 'Analisi Progettuale'
 // Assign the select at a new variable
 let formSelectElement = document.getElementById('select')
 
-workTypeOptions = ""
+let workTypeOptions = ""
 
 //Cycle the array for expanding the variable workTypeOptions with the select options
 for (let i = 0; i < workType.length; i++) {
@@ -16,19 +16,32 @@ for (let i = 0; i < workType.length; i++) {
 //Inject the options in the select HTML
 formSelectElement.innerHTML += workTypeOptions
 
-formElement = document.getElementById('form')
+const formElement = document.getElementById('form')
 console.log(formElement)
+
+//Hours and salary variable
+const hours = 10
+const backendSalary = 20.50
+const frontendSalary = 15.30
+const analysisSalary = 33.60
+let total
+let totalPrice = document.getElementById('totalPrice')
 
 formElement.addEventListener('submit', function(event) {
    event.preventDefault()
    console.log('Form Inviato')
+   totalPrice.innerHTML = `
+   <h5>Prezzo Finale</h5>
+   `
    const formValidation = document.querySelectorAll(".to-validate")
    console.log(formValidation)
+   let formIsValid = true
    
    formValidation.forEach(element => {
       if (element.type === 'checkbox') {
          if (!element.checked) {
             element.classList.add('is-invalid');
+            formIsValid = false
          } else {
             element.classList.remove('is-invalid');
          }
@@ -38,6 +51,7 @@ formElement.addEventListener('submit', function(event) {
 
          if (element.value.trim() === "" || !emailPattern.test(element.value)) {
             element.classList.add('is-invalid');
+            formIsValid = false
          } else {
             element.classList.remove('is-invalid');
          }
@@ -45,10 +59,49 @@ formElement.addEventListener('submit', function(event) {
          // Per tutti gli altri campi, verifica che non siano vuoti
          if (element.value.trim() === "") {
             element.classList.add('is-invalid');
+            formIsValid = false
          } else {
             element.classList.remove('is-invalid');
          }
       }
-   });
+   })
+
+   if (!formIsValid) {
+      return;
+   }
+
+   if (formSelectElement.value === '0') {
+      total = parseFloat(hours * backendSalary).toFixed(2)
+   } else if (formSelectElement.value === '1') {
+      total = parseFloat(hours * frontendSalary).toFixed(2)
+   } else if (formSelectElement.value === '2') {
+      total = parseFloat(hours * analysisSalary).toFixed(2)
+   }
+   console.log(total)
+
+   const validCoupons = ['YHDNU32', 'JANJC63', 'PWKCN25', 'SJDPO96', 'POCIE24']
+   const couponElement = document.getElementById('codicePromo')
+   if (couponElement.value === "") {
+      console.log("Nessun coupon inserito")
+      couponElement.classList.remove('is-invalid')
+      couponElement.classList.remove('is-valid')
+   } else if (validCoupons.includes(couponElement.value)) {
+      console.log('Coupon attivato')
+      couponElement.classList.remove('is-invalid')
+      couponElement.classList.add('is-valid')
+      total = parseFloat(total * 0.75).toFixed(2)
+      console.log(total)
+   } else {
+      console.log('Coupon non valido')
+      couponElement.classList.remove('is-valid')
+      couponElement.classList.add('is-invalid')
+   }
+   
+   const totalArray = total.split(".")
+   console.log(totalArray)
+   totalPrice.innerHTML = `
+   <h5>Prezzo Finale</h5>
+   <span class="text-dark fw-bolder fs-4">€${totalArray[0]}</span><span class="text-muted fw-lighter">,${totalArray[1]}</span>
+   `
 });
 

@@ -55,7 +55,7 @@
                    <div class="mb-3">
                      <label for="cognome" class="form-label">Cognome</label>
                      <input type="text" class="form-control to-validate" id="cognome" required>
-                     <div id="cognome" class="invalid-feedback">
+                     <div id="cognomeFeedback" class="invalid-feedback">
                         Inserisci un cognome valido.
                       </div>
                    </div>
@@ -80,13 +80,19 @@
                   </div>
                   <!-- Form textarea -->
                    <div class="mb-3">
-                     <label for="textarea" class="form-label">Textarea con Bootstrap 5</label>
+                     <label for="textarea" class="form-label">Descrizione del progetto</label>
                      <textarea class="form-control" id="textarea" rows="3"></textarea>
                    </div>
                    <!-- Form promoCode -->
                    <div class="mb-3">
                      <label for="codicePromo" class="form-label">Codice Promozionale (opzionale)</label>
                      <input type="text" class="form-control" id="codicePromo">
+                     <div id="promoFeedback" class="invalid-feedback">
+                        Il coupon da te utilizzato non è valido.
+                     </div>
+                     <div id="promoFeedback" class="valid-feedback">
+                        Il coupon è stato correttamente applicato.
+                     </div>
                    </div>
                    <!-- Form privacyPolicy -->
                    <div class="form-check">
@@ -99,13 +105,12 @@
                       </div>
                    </div>
                    <!-- Submit button and pricing area -->
-                   <div class="d-flex justify-content-around align-items-center pb-3">
+                   <div class="d-flex justify-content-around align-items-center py-3">
                      <div>
                         <button class="btn btn-primary" type="submit">Calcola Preventivo</button>
                      </div>
-                     <div class="text-center">
+                     <div id ="totalPrice" class="text-center">
                         <h5>Prezzo Finale</h5>
-                        <span class="text-dark fw-bolder fs-4">€ 200</span><span class="text-muted fw-lighter">,00</span>
                      </div>
                    </div>
                </form>
